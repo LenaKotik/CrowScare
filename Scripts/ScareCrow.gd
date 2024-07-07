@@ -8,20 +8,28 @@ onready var seenTimer = $SeenTimer
 onready var rageTimer = $RageTimer
 onready var player = get_tree().get_nodes_in_group("player")[0]
 onready var nav = get_tree().get_nodes_in_group("navigation")[0]
+onready var vis = $VisibilityNotifier2D
 
 var move_strength = 1;
+var rage = 0
 
 func _ready():
 	seenTimer.connect("timeout",self,"unseen")
-	#rageTimer.connect("timeout",self,"unrage")
+	rageTimer.connect("timeout",self,"unrage")
+	vis.connect("screen_exited",self,"unseen")
 
 func seen():
 	seenTimer.start()
 	move_strength = 0;
+	rage += 1
+	print(rage)
 
 func unseen():
 	rageTimer.start(rage_time)
 	move_strength = rage_strength;
+
+func unrage():
+	rage = 0
 
 func _physics_process(delta):
 	var path = nav.get_simple_path(global_position,player.global_position)

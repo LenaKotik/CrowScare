@@ -51,51 +51,64 @@ position = Vector2( 32, 0 )
 [node name="RayCast2D" type="RayCast2D" parent="FlashBase/Rays"]
 enabled = true
 cast_to = Vector2( 770, -258 )
+collision_mask = 2
 
 [node name="RayCast2D12" type="RayCast2D" parent="FlashBase/Rays"]
 enabled = true
 cast_to = Vector2( 732, -313 )
+collision_mask = 2
 
 [node name="RayCast2D2" type="RayCast2D" parent="FlashBase/Rays"]
 enabled = true
 cast_to = Vector2( 787, -201 )
+collision_mask = 2
 
 [node name="RayCast2D10" type="RayCast2D" parent="FlashBase/Rays"]
 enabled = true
 cast_to = Vector2( 811, -158 )
+collision_mask = 2
 
 [node name="RayCast2D3" type="RayCast2D" parent="FlashBase/Rays"]
 enabled = true
 cast_to = Vector2( 802, -106 )
+collision_mask = 2
 
 [node name="RayCast2D11" type="RayCast2D" parent="FlashBase/Rays"]
 enabled = true
 cast_to = Vector2( 813, -71 )
+collision_mask = 2
 
 [node name="RayCast2D4" type="RayCast2D" parent="FlashBase/Rays"]
 enabled = true
 cast_to = Vector2( 811, -22 )
+collision_mask = 2
 
 [node name="RayCast2D5" type="RayCast2D" parent="FlashBase/Rays"]
 enabled = true
 cast_to = Vector2( 815, 34 )
+collision_mask = 2
 
 [node name="RayCast2D6" type="RayCast2D" parent="FlashBase/Rays"]
 enabled = true
 cast_to = Vector2( 806, 104 )
+collision_mask = 2
 
 [node name="RayCast2D7" type="RayCast2D" parent="FlashBase/Rays"]
 enabled = true
 cast_to = Vector2( 794, 166 )
+collision_mask = 2
 
 [node name="RayCast2D8" type="RayCast2D" parent="FlashBase/Rays"]
 enabled = true
 cast_to = Vector2( 773, 231 )
+collision_mask = 2
 
 [node name="RayCast2D9" type="RayCast2D" parent="FlashBase/Rays"]
 enabled = true
 cast_to = Vector2( 755, 282 )
+collision_mask = 2
 
 [node name="RayCast2D13" type="RayCast2D" parent="FlashBase/Rays"]
 enabled = true
 cast_to = Vector2( 724, 325 )
+collision_mask = 2

@@ -7,6 +7,7 @@
 radius = 22.5
 
 [node name="ScareCrow" type="KinematicBody2D" groups=["enemy"]]
+collision_layer = 3
 script = ExtResource( 2 )
 speed = 100.0
 rage_strength = 2.0
@@ -38,3 +39,7 @@ one_shot = true
 
 [node name="Line2D" type="Line2D" parent="."]
 visible = false
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -0.500001, 2 )
+scale = Vector2( 3.65, 4 )
