@@ -29,7 +29,7 @@ func _physics_process(_delta):
 		light.enabled = not light.enabled
 	
 	# interupt
-	if Input.is_action_just_pressed("interupt") and interacting:
+	if Input.is_action_just_released("interact") and interacting:
 		emit_signal("interupt")
 		move_strength = 1
 		interacting = false
@@ -38,7 +38,7 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("interact") and interactable:
 		emit_signal("interact")
 		move_strength = 0
-		self.interactable = false
+		#self.interactable = false
 		interacting = true
 	
 	# flashlight aiming
@@ -50,4 +50,6 @@ func _physics_process(_delta):
 			var object = r.get_collider()
 			if object.is_in_group("enemy"):
 				object.seen()
-	
+
+func die():
+	queue_free()

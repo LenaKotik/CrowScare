@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://undertale battle font_0.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Scripts/menu.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Menu.gd" type="Script" id=2]
 [ext_resource path="res://Textures/buttonx3.png" type="Texture" id=3]
 [ext_resource path="res://Textures/фон.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Main.tscn" type="PackedScene" id=5]
@@ -61,14 +61,15 @@ alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 margin_left = 422.0
-margin_bottom = 700.0
+margin_right = 602.0
+margin_bottom = 600.0
 custom_constants/separation = 50
 alignment = 1
 
 [node name="Button_play" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 241.0
+margin_top = 191.0
 margin_right = 180.0
-margin_bottom = 325.0
+margin_bottom = 275.0
 rect_min_size = Vector2( 90, 0 )
 focus_mode = 0
 custom_colors/font_color = Color( 0.866667, 0.423529, 0.192157, 1 )
@@ -95,9 +96,9 @@ __meta__ = {
 }
 
 [node name="Button_quit" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-margin_top = 375.0
+margin_top = 325.0
 margin_right = 180.0
-margin_bottom = 459.0
+margin_bottom = 409.0
 focus_mode = 0
 size_flags_stretch_ratio = 0.0
 custom_colors/font_color = Color( 0.866667, 0.423529, 0.192157, 1 )

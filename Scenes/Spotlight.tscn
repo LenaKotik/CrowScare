@@ -1,15 +1,25 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Textures/generator.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Spotlight.gd" type="Script" id=2]
 [ext_resource path="res://Textures/v.webp" type="Texture" id=3]
 [ext_resource path="res://undertale battle font_0.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Textures/spotlight.png" type="Texture" id=5]
+[ext_resource path="res://VerticalFade.gdshader" type="Shader" id=6]
 
-[sub_resource type="CircleShape2D" id=2]
-radius = 74.4312
+[sub_resource type="ShaderMaterial" id=11]
+shader = ExtResource( 6 )
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 60.075
+[sub_resource type="CapsuleShape2D" id=8]
+radius = 62.0
+height = 116.0
+
+[sub_resource type="CapsuleShape2D" id=9]
+radius = 42.0
+height = 82.0
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 36.5, 39.5 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 32
@@ -18,25 +28,156 @@ font_data = ExtResource( 4 )
 [sub_resource type="OccluderPolygon2D" id=4]
 polygon = PoolVector2Array( 0, 60, -17, 58, -30, 51, -43, 42, -51, 30, -57, 17, -59, 1, -58, -15, -54, -25, -46, -37, -39, -46, -26, -54, -14, -58, -1, -60, 12, -59, 23, -55, 29, -53, 40, -45, 50, -33, 57, -18, 60, -2, 57, 17, 51, 31, 39, 47, 18, 57 )
 
+[sub_resource type="CircleShape2D" id=5]
+radius = 1022.43
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("LightArea/Light2D:texture_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LightArea/Light2D:enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LightArea:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("InteractField:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "fixed"
+tracks/0/type = "value"
+tracks/0/path = NodePath("LightArea/Light2D:texture_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.353554, 1 ),
+"update": 0,
+"values": [ 0.01, 2.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LightArea/Light2D:enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LightArea:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("InteractField:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
 [node name="Spotlight" type="StaticBody2D"]
 light_mask = 3
 script = ExtResource( 2 )
-fixTime = 30.0
+fixTime = 20.0
 
 [node name="Icon" type="Sprite" parent="." groups=["spotlight"]]
 modulate = Color( 1, 0.960784, 0, 1 )
 light_mask = 3
-scale = Vector2( 2, 2 )
+scale = Vector2( 3, 3 )
 texture = ExtResource( 1 )
+offset = Vector2( 0, -12 )
+
+[node name="Spotlight" type="Sprite" parent="."]
+position = Vector2( 163, -115 )
+scale = Vector2( 3, 3 )
+z_index = 1
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 39, 10, 47, 119 )
+
+[node name="Spotlight2" type="Sprite" parent="."]
+material = SubResource( 11 )
+position = Vector2( 160, -419 )
+scale = Vector2( 3, 3 )
+z_index = 1
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 39, 11, 45, 84 )
 
 [node name="InteractField" type="Area2D" parent="."]
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractField"]
 modulate = Color( 0.0235294, 0.0470588, 0.647059, 1 )
-shape = SubResource( 2 )
+rotation = 1.5708
+shape = SubResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+rotation = 1.5708
+shape = SubResource( 9 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2( 165.5, 2.5 )
+rotation = 1.5708
+shape = SubResource( 10 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -55,16 +196,6 @@ step = 1.0
 [node name="Timer" type="Timer" parent="CanvasLayer/ProgressBar"]
 wait_time = 0.2
 
-[node name="Light2D2" type="Light2D" parent="."]
-visible = false
-rotation = -1.5708
-scale = Vector2( 4, 4 )
-texture = ExtResource( 3 )
-texture_scale = 0.15
-range_item_cull_mask = 6
-shadow_enabled = true
-shadow_item_cull_mask = 2
-
 [node name="InteractableLabel" type="Label" parent="."]
 visible = false
 light_mask = 3
@@ -81,3 +212,28 @@ valign = 1
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 visible = false
 occluder = SubResource( 4 )
+
+[node name="LightArea" type="Area2D" parent="."]
+position = Vector2( 163, 0 )
+monitoring = false
+monitorable = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LightArea"]
+shape = SubResource( 5 )
+
+[node name="Light2D" type="Light2D" parent="LightArea"]
+rotation = -1.5708
+scale = Vector2( 4, 4 )
+enabled = false
+texture = ExtResource( 3 )
+texture_scale = 2.0
+range_item_cull_mask = 7
+shadow_enabled = true
+shadow_item_cull_mask = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 6 )
+anims/fixed = SubResource( 7 )
