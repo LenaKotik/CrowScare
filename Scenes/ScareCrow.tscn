@@ -4,11 +4,11 @@
 [ext_resource path="res://Scripts/ScareCrow.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 22.5
-height = 61.0
+radius = 58.0
+height = 14.0
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 60.0083
+radius = 68.0
 
 [node name="ScareCrow" type="KinematicBody2D" groups=["enemy"]]
 collision_layer = 3
@@ -16,6 +16,7 @@ script = ExtResource( 2 )
 speed = 100.0
 rage_strength = 2.0
 rage_time = 2.0
+agroDecay = 0.001
 
 [node name="Icon" type="Sprite" parent="."]
 position = Vector2( 0, -6 )
@@ -23,7 +24,7 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.5, 4 )
+position = Vector2( -1, -9 )
 shape = SubResource( 1 )
 
 [node name="SeenTimer" type="Timer" parent="."]
@@ -32,6 +33,13 @@ wait_time = 0.5
 one_shot = true
 
 [node name="RageTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="EatTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ScramTimer" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 
 [node name="Line2D" type="Line2D" parent="."]
@@ -45,4 +53,5 @@ scale = Vector2( 6.3, 7.15 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 modulate = Color( 0.964706, 0.862745, 0.313726, 1 )
+position = Vector2( 0, 1 )
 shape = SubResource( 2 )

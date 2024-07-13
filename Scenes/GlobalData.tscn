@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/GlobalData.gd" type="Script" id=1]
+[ext_resource path="res://Textures/parts/parts_hammer.png" type="Texture" id=2]
+[ext_resource path="res://Textures/parts/parts_wrench.png" type="Texture" id=3]
+[ext_resource path="res://Textures/parts/parts_cog.png" type="Texture" id=4]
+[ext_resource path="res://Textures/parts/parts_screwdriver.png" type="Texture" id=5]
+[ext_resource path="res://Textures/parts/parts_fork.png" type="Texture" id=6]
 
 [node name="GlobalData" type="Node"]
 script = ExtResource( 1 )
+part_textures = [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 6 ) ]
