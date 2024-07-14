@@ -15,6 +15,9 @@ onready var player = get_tree().get_nodes_in_group("player")[0]
 onready var nav = get_tree().get_nodes_in_group("navigation")[0]
 onready var vis = $VisibilityNotifier2D
 onready var hurtbox = $Hurtbox
+onready var walkSnd = $WalkSound
+onready var eatSnd = $EatSound
+onready var huntSnd = $HuntSound
 
 var move_strength = 1;
 var rage = 0
@@ -35,6 +38,7 @@ func seen():
 	target = null
 	eating = false
 	scram = true
+	eatSnd.stop()
 	eatTimer.stop()
 	seenTimer.start()
 	move_strength = 0;
@@ -53,10 +57,13 @@ func unrage():
 func hurtbox_collision(body):
 	if move_strength > 0 and body.is_in_group("player"):
 		body.die()
+		walkSnd.stop()
+		emit_signal("game_over")
 
 func decide():
 	if move_strength > 0 and ((randi()%100)<=(int(agro)+5)):
 		hunting = true
+		huntSnd.play()
 	if hunting:
 		return player
 	if scram:
@@ -77,7 +84,6 @@ func decide():
 func _physics_process(delta):
 	if not is_instance_valid(player) or eating: return
 	agro = lerp(agro,agro/2,agroDecay)
-	print(agro,hunting)
 	if hunting:
 		agro = lerp(agro,0,agroDecay*10)
 		agro -= agroDecay*10
@@ -94,10 +100,16 @@ func _physics_process(delta):
 		if not rageTimer.is_stopped() and move_strength > 0:
 			move_strength = lerp(1,min(sqrt(rage)/2+1,3),rageTimer.time_left/rage_time)
 		velocity = (path[1] - global_position).normalized() * speed * move_strength
-	
+	if walkSnd.playing and velocity == Vector2.ZERO:
+		walkSnd.stop()
+	elif not walkSnd.playing and velocity != Vector2.ZERO:
+		walkSnd.play()
 	move_and_slide(velocity)
 
 func eat(stalk):
+	walkSnd.stop()
+	if not eatSnd.playing:
+		eatSnd.play()
 	target = null
 	eating = true
 	eatTimer.start()
@@ -105,6 +117,7 @@ func eat(stalk):
 	stalk.reduce()
 	if stalk.eaten:
 		eating = false
+		eatSnd.stop()
 	else:
 		eat(stalk) # scary
 

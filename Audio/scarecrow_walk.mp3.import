@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/scarecrow_walk.mp3-b9f65173c51ca2116b2a24f1b25331a8.mp3str"
+
+[deps]
+
+source_file="res://Audio/scarecrow_walk.mp3"
+dest_files=[ "res://.import/scarecrow_walk.mp3-b9f65173c51ca2116b2a24f1b25331a8.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/scarecrow_attack.mp3-944b9a47c3f9ed6be60a9788f591cea9.mp3str"
+
+[deps]
+
+source_file="res://Audio/scarecrow_attack.mp3"
+dest_files=[ "res://.import/scarecrow_attack.mp3-944b9a47c3f9ed6be60a9788f591cea9.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/scarecrow_eat.mp3-5be03afabf7537c14abb89ac50958595.mp3str"
+
+[deps]
+
+source_file="res://Audio/scarecrow_eat.mp3"
+dest_files=[ "res://.import/scarecrow_eat.mp3-5be03afabf7537c14abb89ac50958595.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
