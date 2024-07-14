@@ -3,13 +3,13 @@
 [ext_resource path="res://undertale battle font_0.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scripts/Menu.gd" type="Script" id=2]
 [ext_resource path="res://Textures/buttonx3.png" type="Texture" id=3]
-[ext_resource path="res://Textures/фон.png" type="Texture" id=4]
+[ext_resource path="res://Textures/back.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Main.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Textures/button_2.png" type="Texture" id=6]
 [ext_resource path="res://Audio/menu_music.mp3" type="AudioStream" id=7]
 
 [sub_resource type="DynamicFont" id=1]
-size = 97
+size = 150
 outline_size = 6
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
@@ -48,7 +48,7 @@ margin_right = 1024.0
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 margin_top = 100.0
 margin_right = 1024.0
-margin_bottom = 192.0
+margin_bottom = 242.0
 custom_colors/font_color = Color( 0.866667, 0.423529, 0.192157, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Crow Scare"
@@ -111,6 +111,7 @@ icon_align = 1
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+volume_db = -39.53
 autoplay = true
 bus = "Music"
 
