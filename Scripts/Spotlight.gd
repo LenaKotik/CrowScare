@@ -1,5 +1,9 @@
 extends StaticBody2D
 
+signal started
+
+signal finished
+
 export var fixTime : float
 
 onready var interactField = $InteractField
@@ -10,7 +14,8 @@ onready var anim = $AnimationPlayer
 onready var lightArea = $LightArea
 onready var partsPanel = $Panel
 onready var textureContainer = $Panel/HBoxContainer
-
+onready var fix1_smd=$Fix1
+onready var fix2_smd=$Fix2
 var fixable = false
 var part_ids = []
 
@@ -31,6 +36,7 @@ func _physics_process(_delta):
 	for b in lightArea.get_overlapping_bodies():
 		if b.is_in_group("enemy"):
 			b.seen()
+			b.stuck = true
 
 #func seen(body):
 	#if body.is_in_group("enemy"):
@@ -59,11 +65,15 @@ func fix():
 				GlobalData.parts[p] = GlobalData.parts[p] - 1
 			GlobalData.emit_signal("parts_updated")
 			fixable = true
+			emit_signal("started")
+			fix1_smd.play()
 			partsPanel.hide()
 		else:
 			partsPanel.show()
 	else:
 		fixProgress.show()
+		if not fix2_smd.playing:
+			fix2_smd.play()
 		fixTimer.start(fixTime*fixProgress.step/100)
 		#interactableLbl.visible = false
 
@@ -74,10 +84,13 @@ func fixUpdate():
 		fixProgress.hide()
 		interactableLbl.hide()
 		anim.play("fixed")
+		emit_signal("finished")
 
 func interupt():
 	#fixProgress.hide()
 	fixTimer.stop()
+	fix2_smd.stop()
+	
 
 func parts_ui_update():
 	var rects = textureContainer.get_children() 

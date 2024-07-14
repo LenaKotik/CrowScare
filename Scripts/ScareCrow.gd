@@ -18,6 +18,7 @@ onready var hurtbox = $Hurtbox
 onready var walkSnd = $WalkSound
 onready var eatSnd = $EatSound
 onready var huntSnd = $HuntSound
+onready var decideTimer = $decideTimer
 
 var move_strength = 1;
 var rage = 0
@@ -26,13 +27,28 @@ var eating = false
 var scram = false
 var target = null
 var agro = 0
+var stuck = false
 
 func _ready():
+	for s in get_tree().get_nodes_in_group("spotlight"):
+		s.connect("started",self,"attack")
 	seenTimer.connect("timeout",self,"unseen")
+	decideTimer.connect("timeout",self,"change")
 	rageTimer.connect("timeout",self,"unrage")
 	scramTimer.connect("timeout",self,"unscram")
 	vis.connect("screen_exited",self,"unseen")
 	hurtbox.connect("body_entered",self,"hurtbox_collision")
+
+func attack():
+	target = null
+	agro = 200
+	
+func change():
+	var stalks = get_tree().get_nodes_in_group("stalks")
+	stalks.shuffle()
+	global_position = stalks[0].global_position
+	#target = stalks[0]
+	target = decide()
 
 func seen():
 	target = null
@@ -61,6 +77,7 @@ func hurtbox_collision(body):
 		emit_signal("game_over")
 
 func decide():
+	decideTimer.start()
 	if move_strength > 0 and ((randi()%100)<=(int(agro)+5)):
 		hunting = true
 		huntSnd.play()
@@ -83,6 +100,9 @@ func decide():
 
 func _physics_process(delta):
 	if not is_instance_valid(player) or eating: return
+	if not vis.is_on_screen() and stuck:
+		change()
+		stuck = false
 	agro = lerp(agro,agro/2,agroDecay)
 	if hunting:
 		agro = lerp(agro,0,agroDecay*10)

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/generator_fix1.mp3-5534a0acff0b9f5a90a55c34a41dc793.mp3str"
+
+[deps]
+
+source_file="res://Audio/generator_fix1.mp3"
+dest_files=[ "res://.import/generator_fix1.mp3-5534a0acff0b9f5a90a55c34a41dc793.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

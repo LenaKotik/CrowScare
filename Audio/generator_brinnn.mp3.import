@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/generator_brinnn.mp3-40b30f0c9c8654a1d9866c0a2f399373.mp3str"
+
+[deps]
+
+source_file="res://Audio/generator_brinnn.mp3"
+dest_files=[ "res://.import/generator_brinnn.mp3-40b30f0c9c8654a1d9866c0a2f399373.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
